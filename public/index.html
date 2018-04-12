@@ -3,15 +3,23 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/styles.css"></link>
 </head>
-<body>
-  <p>Hello Node!</p>
-  <ol id="messages"></ol>
-  <form id="message-form">
-    <input name="message" type="text" placeholder="Message"/>
-    <button>Send</button>
-  </form>
-  <button id="send-location">Send Location</button>
+<body class="chat">
+  <div class="chat__sidebar">
+    <h3>People</h3>
+    <div id="users"></div>
+  </div>
+  <div class="chat__main">
+    <ol id="messages" class="chat_messages"></ol>
+    <div class="chat__footer">
+      <form id="message-form">
+        <input name="message" type="text" placeholder="Message"/>
+        <button>Send</button>
+        <button id="send-location">Send Location</button>
+      </form>
+    </div>
+  </div>
   <script src='/socket.io/socket.io.js'></script>
   <script src='/js/libs/jquery-3.3.1.min.js'></script>
   <script src='/js/index.js'></script>
