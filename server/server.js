@@ -13,15 +13,19 @@ var server = http.createServer(app);
 var io = socketIO(server);
 io.on('connection', (socket) => {
   console.log('New user connected');
-  socket.emit('newMessage', generateMessage('Admin', 'Welcome to chat app'));
-
-  socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
   socket.on('join', (params, callback) => {
     console.log(params);
     if (!isRealSring(params.name) || !isRealSring(params.room)) {
       callback('Name and room are required');
     } else {
+      socket.join(params.room);
+      // sokcet.leave('Developers')
+      // io.emit -> io.to('Developers').emit
+      // socket.broadcast.emit -> socket.broadcast.to('Developers').emit
+      // socket.emit
+      socket.emit('newMessage', generateMessage('Admin', 'Welcome to chat app'));
+      socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
       callback();
     }
   });
