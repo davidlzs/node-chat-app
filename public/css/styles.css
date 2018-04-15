@@ -105,6 +105,13 @@ button:disabled {
   text-align: left;
 }
 
+.chat__sidebar h4 {
+  color: #e6eaee;
+  margin: 10px 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
 .chat__sidebar ul {
   list-style-type: none;
 }
